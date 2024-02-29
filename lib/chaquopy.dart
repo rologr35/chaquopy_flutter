@@ -10,7 +10,23 @@ class Chaquopy {
   /// Structure of result map is :
   /// result['textOutput'] : The original output / error
   static Future<Map<String, dynamic>> executeCode(String code) async {
-    dynamic outputData = await _channel.invokeMethod('runPythonScript', code);
+    dynamic outputData = await _channel.invokeMethod('runPythonScript', code).onError((error, stackTrace) {
+      throw Exception(error);
+    });
     return Map<String, dynamic>.from(outputData);
+  }
+
+  static Future<bool> pythonServiceIsStarted() async {
+    final result = await _channel.invokeMethod('isStarted').onError((error, stackTrace) {
+      throw Exception(error);
+    });
+    return result;
+  }
+
+  static void startService() async {
+    final result = await _channel.invokeMethod('start').onError((error, stackTrace) {
+      throw Exception(error);
+    });
+    return result;
   }
 }

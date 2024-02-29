@@ -28,7 +28,20 @@ apply plugin: 'kotlin-android'
 apply plugin: 'com.chaquo.python'
 
 android {
-    compileSdkVersion 33
+    if (project.android.hasProperty("namespace")) {
+        namespace 'com.chaquopy.chaquopy'
+    }
+
+    compileSdk 33
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
