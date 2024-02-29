@@ -110,8 +110,15 @@ class _HomePageState extends State<HomePage> {
                     flex: 1,
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: FlatButton(
-                        color: Colors.green,
+                      child: TextButton(
+                        style: TextButton.styleFrom(
+                          foregroundColor: Colors.white, minimumSize: Size(88, 44),
+                          padding: EdgeInsets.symmetric(horizontal: 16.0),
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(2.0)),
+                          ),
+                          backgroundColor: Colors.blue,
+                        ),
                         onPressed: () => addIntendation(),
                         child: Icon(
                           Icons.arrow_right_alt,
@@ -125,9 +132,15 @@ class _HomePageState extends State<HomePage> {
                     flex: 1,
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: FlatButton(
-                        height: 50,
-                        color: Colors.green,
+                      child: TextButton(
+                        style: TextButton.styleFrom(
+                          foregroundColor: Colors.white, minimumSize: Size(88, 44),
+                          padding: EdgeInsets.symmetric(horizontal: 16.0),
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(2.0)),
+                          ),
+                          backgroundColor: Colors.blue,
+                        ),
                         child: Text(
                           'run Code',
                         ),
