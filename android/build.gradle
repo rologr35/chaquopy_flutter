@@ -20,6 +20,7 @@ rootProject.allprojects {
     repositories {
         google()
         jcenter()
+        maven { url 'https://chaquo.com/maven' }
     }
 }
 
