@@ -23,7 +23,7 @@ class Chaquopy {
     return result;
   }
 
-  static void startService() async {
+  static Future<bool> startService() async {
     final result = await _channel.invokeMethod('start').onError((error, stackTrace) {
       throw Exception(error);
     });

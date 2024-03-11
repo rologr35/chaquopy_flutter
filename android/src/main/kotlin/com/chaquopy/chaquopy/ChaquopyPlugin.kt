@@ -55,13 +55,13 @@ class ChaquopyPlugin : FlutterPlugin, MethodCallHandler {
                 val _result: Map<String, Any?> = _runPythonTextCode(code)
                 result.success(_result)
             } catch (e: Exception) {
-                result.error(e.message.toString(), -1)
+                result.error("Exception", e.message.toString(), -1)
             }
         } else if (call.method == "isStarted") {
             try {
                 result.success(Python.isStarted())
             } catch (e: Exception) {
-                result.error(e.message.toString(), -1)
+                result.error("Exception", e.message.toString(), -1)
             }
         } else if (call.method == "start") {
             try {
@@ -69,11 +69,12 @@ class ChaquopyPlugin : FlutterPlugin, MethodCallHandler {
                     if (!Python.isStarted()) {
                         Python.start(AndroidPlatform(it))
                     }
+                    result.success(true)
                 } ?: run {
-                    result.error("Exception: No Context", -1)
+                    result.error("Exception", "No Context", -1)
                 }
             } catch (e: Exception) {
-                result.error(e.message.toString(), -1)
+                result.error("Exception", e.message.toString(), -1)
             }
         } else {
             result.notImplemented()
