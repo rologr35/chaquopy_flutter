@@ -43,6 +43,22 @@ add this line to application tag in manifest file
 android:name="com.chaquo.python.android.PyApplication".
 ```
 
+In case you don't want to replace android:name you could add this lines to your Application.kt
+
+```
+// Required imports
+import com.chaquo.python.Python
+import com.chaquo.python.android.AndroidPlatform
+
+class Application : FlutterApplication() {
+
+    override fun onCreate() {
+        super.onCreate()
+        Python.start(AndroidPlatform(this)) // add this line to start python engine once the app starts.
+    }
+}
+```
+
 After that sync your project.
 
 Now, in your android folder, you'll have additional python folder created. Now, Download [script.py](https://drive.google.com/file/d/1D4Hjt66f0MXkaeAQ8WLX3DEebX3BrFvM/view?usp=sharing) and put it in python directory. (Kindly note that this python file should not be renamed other than script.py and also if your code doesn't work, check the intendations of the downloaded file.)
